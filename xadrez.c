@@ -1,32 +1,51 @@
 #include <stdio.h>
 
+//Criando a função recursiva para o movimento da Torre.
+void movimentoTorre(int x){
+    if (x > 0){
+        printf("Torre se moveu uma casa para a direita.\n");
+        movimentoTorre(--x);
+    }
+}
+
+//Criando a função recursiva para o movimento da Rainha.
+void movimentoRainha(int x){
+    if (x > 0){
+        printf("Rainha se moveu uma casa para a esquerda.\n");
+        movimentoRainha(--x);
+    }
+}
+
 int main() {
     //Declaração e inicialização das variáveis.
-    int movimentoTorre = 1, movimentoBispo = 1, movimentoRainha = 1, movimentoCavalo = 1;
+    int movimentoBispo = 1;
 
-    //Loop for para o movimento da Torre.
-    for (movimentoTorre; movimentoTorre <= 5; movimentoTorre++){
-        printf("Torre se moveu uma casa para a direita.\n");
-    }
+    //Chamando a função recursiva para o movimento da Torre.
+    movimentoTorre(5);
 
-    //Loop while para o movimento do Bispo.
+    //Loop aninhado para o movimento do Bispo.
     while (movimentoBispo <= 5){
-        printf("Bispo se moveu uma casa na diagonal cima/direita.\n");
+        int i = 1;
+        while (i--){
+            printf("Bispo se moveu uma casa para cima/");
+        }
+        printf("direita.\n");
         movimentoBispo++;
     }
 
-    //Loop do-while para o movimento da Rainha.
-    do{
-        printf("Rainha se moveu uma casa para a esquerda.\n");
-        movimentoRainha++;
-    }while (movimentoRainha <= 8);
+    //Chamando a função recursiva para o movimento da Rainha.
+    movimentoRainha(8);
 
-    //Loop aninhado para o movimento do Cavalo.
-    while (movimentoCavalo--){
-        for (int i = 1; i <= 2; i++){
+    //Loop para o movimento do Cavalo.
+    for (int i = 1, j = 1; i <= 2 && j <= 3; i += (i == 2 ? 0 : 1), j++){
+        if (i == j){
             printf("Cavalo se moveu uma casa para baixo.\n");
+            continue;
         }
-        printf("Cavalo se moveu uma casa para a esquerda.\n");
+        if (i != j){
+            printf("Cavalo se moveu uma casa para a esquerda.\n");
+            break;
+        }
     }
 
     return 0;
