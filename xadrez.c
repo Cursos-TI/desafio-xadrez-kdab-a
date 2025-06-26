@@ -2,7 +2,7 @@
 
 int main() {
     //Declaração e inicialização das variáveis.
-    int movimentoTorre = 1, movimentoBispo = 1, movimentoRainha = 1;
+    int movimentoTorre = 1, movimentoBispo = 1, movimentoRainha = 1, movimentoCavalo = 1;
 
     //Loop for para o movimento da Torre.
     for (movimentoTorre; movimentoTorre <= 5; movimentoTorre++){
@@ -20,6 +20,14 @@ int main() {
         printf("Rainha se moveu uma casa para a esquerda.\n");
         movimentoRainha++;
     }while (movimentoRainha <= 8);
+
+    //Loop aninhado para o movimento do Cavalo.
+    while (movimentoCavalo--){
+        for (int i = 1; i <= 2; i++){
+            printf("Cavalo se moveu uma casa para baixo.\n");
+        }
+        printf("Cavalo se moveu uma casa para a esquerda.\n");
+    }
 
     return 0;
 }
